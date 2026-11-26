@@ -566,8 +566,10 @@ export function GeneratorView({
                     <RefreshCw className="w-3.5 h-3.5" />
                     <span>Retry Request</span>
                   </button>
-                  <span className="text-[11px] text-rose-600">
-                    If this error persists, check your Gemini API key in <code>.env.local</code>.
+                  <span className="text-[11px] text-rose-700">
+                    {apiError.includes("API Key") || apiError.includes("not configured")
+                      ? "Verify your GEMINI_API_KEY in .env.local or deployment environment variables."
+                      : "Temporary model demand or rate-limit errors usually resolve within a few seconds."}
                   </span>
                 </div>
               </div>

@@ -80,10 +80,12 @@ async function callGeminiWithResilience(
   userPrompt: string,
   temperature = 0.7
 ): Promise<string> {
-  // Candidate fallback list: primary requested model first, then compatible active flash models
+  // Candidate fallback list: primary requested model first, then active Flash and Flash-Lite models
   const modelChain = [
     primaryModel,
     "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
   ].filter((v, i, a) => a.indexOf(v) === i);
 
@@ -126,12 +128,22 @@ async function callGeminiWithResilience(
           throw new Error("Gemini API Rate Limit or Quota Exceeded. Please wait a moment before trying again.");
         }
 
-        // If it's a 503 (high demand), pause briefly before retry
+        // If it's a 503 (high demand), pause briefly then move quickly to fallback models
         if (errMsg.includes("503") || errMsg.includes("UNAVAILABLE")) {
-          await new Promise((resolve) => setTimeout(resolve, 1500 * attempt));
+          await new Promise((resolve) => setTimeout(resolve, 600));
+          break;
         }
       }
     }
+  }
+
+  if (
+    lastError &&
+    (lastError.message.includes("503") || lastError.message.includes("UNAVAILABLE"))
+  ) {
+    throw new Error(
+      "Gemini AI servers are temporarily experiencing high demand (503). Please wait a few seconds and click Retry."
+    );
   }
 
   throw (
