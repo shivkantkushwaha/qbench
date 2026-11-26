@@ -204,14 +204,14 @@ export function GeneratorView({
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             Question Generator Specification
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
             Define curriculum parameters, target cognitive depth, and select your prompt version
           </p>
         </div>
 
         {/* Preset pill buttons */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-500 font-medium hidden sm:inline">
+          <span className="text-xs text-slate-600 font-medium hidden sm:inline">
             Load Template:
           </span>
           <div className="flex flex-wrap gap-1.5">
@@ -220,7 +220,7 @@ export function GeneratorView({
                 key={idx}
                 type="button"
                 onClick={() => handleApplyPreset(preset)}
-                className="px-2.5 py-1 text-xs rounded-md bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-colors shadow-2xs"
+                className="px-3 py-1.5 text-xs font-medium rounded-lg bg-white hover:bg-blue-50 hover:text-blue-800 hover:border-blue-300 text-slate-700 border border-slate-300 transition-colors shadow-2xs"
               >
                 {preset.name.split("(")[0].trim()}
               </button>
@@ -234,7 +234,7 @@ export function GeneratorView({
           title={
             <div className="flex items-center gap-2">
               <FilePlus2 className="w-4 h-4 text-blue-600" />
-              <span>Examination Parameters & AI Engine</span>
+              <span>Examination Parameters &amp; AI Engine</span>
             </div>
           }
           subtitle="Fields marked with an asterisk (*) are mandatory for psychometric calibration"
@@ -242,7 +242,7 @@ export function GeneratorView({
             <button
               type="button"
               onClick={handleReset}
-              className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-300 bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Form</span>
@@ -251,29 +251,29 @@ export function GeneratorView({
         />
 
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Prompt Version Selector */}
-            <div className="p-4 rounded-lg bg-slate-50 border border-slate-200">
-              <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-semibold text-slate-900 flex items-center gap-1.5">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <label className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                   <Layers className="w-4 h-4 text-blue-600" />
                   <span>Generator Prompt Strategy</span>
                 </label>
-                <span className="text-[11px] text-slate-500">
+                <span className="text-xs text-slate-600">
                   Select prompt engineering version
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {/* V1 Option */}
                 <label
-                  className={`p-3 rounded-md border text-xs cursor-pointer transition-all ${
+                  className={`p-3.5 rounded-lg border text-xs cursor-pointer transition-all ${
                     formData.promptVersion === "V1"
-                      ? "bg-white border-blue-600 ring-1 ring-blue-600/20 shadow-xs"
-                      : "bg-white/60 border-slate-200 hover:border-slate-300"
+                      ? "bg-blue-50/50 border-2 border-blue-600 shadow-xs"
+                      : "bg-white border-slate-200 hover:border-slate-300"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center justify-between mb-1.5">
                     <span className="font-bold text-slate-900">V1: Baseline</span>
                     <input
                       type="radio"
@@ -286,20 +286,20 @@ export function GeneratorView({
                       className="text-blue-600 focus:ring-blue-500"
                     />
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-snug">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Simple role-based instruction. Direct generation without strict multi-criteria checks.
                   </p>
                 </label>
 
                 {/* V2 Option */}
                 <label
-                  className={`p-3 rounded-md border text-xs cursor-pointer transition-all ${
+                  className={`p-3.5 rounded-lg border text-xs cursor-pointer transition-all ${
                     formData.promptVersion === "V2"
-                      ? "bg-white border-blue-600 ring-1 ring-blue-600/20 shadow-xs"
-                      : "bg-white/60 border-slate-200 hover:border-slate-300"
+                      ? "bg-blue-50/50 border-2 border-blue-600 shadow-xs"
+                      : "bg-white border-slate-200 hover:border-slate-300"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center justify-between mb-1.5">
                     <span className="font-bold text-slate-900">V2: Structured</span>
                     <input
                       type="radio"
@@ -312,23 +312,23 @@ export function GeneratorView({
                       className="text-blue-600 focus:ring-blue-500"
                     />
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-snug">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Includes role, context, syllabus constraints, detailed guidance, and explicit rubric schema.
                   </p>
                 </label>
 
                 {/* V3 Option */}
                 <label
-                  className={`p-3 rounded-md border text-xs cursor-pointer transition-all ${
+                  className={`p-3.5 rounded-lg border text-xs cursor-pointer transition-all ${
                     formData.promptVersion === "V3"
-                      ? "bg-white border-blue-600 ring-1 ring-blue-600/20 shadow-xs"
-                      : "bg-white/60 border-slate-200 hover:border-slate-300"
+                      ? "bg-blue-50/50 border-2 border-blue-600 shadow-xs"
+                      : "bg-white border-slate-200 hover:border-slate-300"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-1.5">
                       <span className="font-bold text-slate-900">V3: Advanced</span>
-                      <span className="text-[9px] font-bold tracking-wider uppercase px-1 py-0.2 bg-emerald-100 text-emerald-800 rounded">
+                      <span className="text-[10px] font-bold tracking-wider uppercase px-1.5 py-0.5 bg-emerald-100 text-emerald-800 border border-emerald-200 rounded">
                         Recommended
                       </span>
                     </div>
@@ -343,7 +343,7 @@ export function GeneratorView({
                       className="text-blue-600 focus:ring-blue-500"
                     />
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-snug">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Multi-constraint generation with self-audit, mark balance verification, and distractor rigor.
                   </p>
                 </label>
@@ -353,8 +353,8 @@ export function GeneratorView({
             {/* Subject Name & Topic */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
-                  Subject / Course Name <span className="text-rose-500">*</span>
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
+                  Subject / Course Name <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -363,22 +363,22 @@ export function GeneratorView({
                     setFormData({ ...formData, subjectName: e.target.value })
                   }
                   placeholder="e.g. Operating Systems (CS301)"
-                  className={`w-full px-3 py-2 text-xs sm:text-sm rounded-md border ${
+                  className={`w-full h-10 px-3.5 py-2 text-sm rounded-lg border ${
                     validationErrors.subjectName
-                      ? "border-rose-400 bg-rose-50/30"
+                      ? "border-rose-500 bg-rose-50/40"
                       : "border-slate-300 bg-white"
-                  } text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500`}
+                  } text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600`}
                 />
                 {validationErrors.subjectName && (
-                  <p className="text-[11px] text-rose-600 mt-1">
+                  <p className="text-xs text-rose-700 font-medium mt-1">
                     {validationErrors.subjectName}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
-                  Topic / Sub-Topic <span className="text-rose-500">*</span>
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
+                  Topic / Sub-Topic <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -387,14 +387,14 @@ export function GeneratorView({
                     setFormData({ ...formData, topic: e.target.value })
                   }
                   placeholder="e.g. Banker's Algorithm & Deadlock Avoidance"
-                  className={`w-full px-3 py-2 text-xs sm:text-sm rounded-md border ${
+                  className={`w-full h-10 px-3.5 py-2 text-sm rounded-lg border ${
                     validationErrors.topic
-                      ? "border-rose-400 bg-rose-50/30"
+                      ? "border-rose-500 bg-rose-50/40"
                       : "border-slate-300 bg-white"
-                  } text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500`}
+                  } text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600`}
                 />
                 {validationErrors.topic && (
-                  <p className="text-[11px] text-rose-600 mt-1">
+                  <p className="text-xs text-rose-700 font-medium mt-1">
                     {validationErrors.topic}
                   </p>
                 )}
@@ -403,11 +403,11 @@ export function GeneratorView({
 
             {/* Syllabus Details / Learning Objectives */}
             <div>
-              <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-semibold text-slate-800">
-                  Syllabus Details & Learning Objectives <span className="text-rose-500">*</span>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-semibold text-slate-900">
+                  Syllabus Details &amp; Learning Objectives <span className="text-rose-600">*</span>
                 </label>
-                <span className="text-[11px] text-slate-400">
+                <span className="text-xs text-slate-600 font-medium">
                   {formData.syllabusDetails.length}/1000 chars
                 </span>
               </div>
@@ -418,14 +418,14 @@ export function GeneratorView({
                   setFormData({ ...formData, syllabusDetails: e.target.value })
                 }
                 placeholder="Provide syllabus context or specific learning outcomes. The AI respects your input and will not invent unmentioned modules."
-                className={`w-full px-3 py-2 text-xs sm:text-sm rounded-md border ${
+                className={`w-full px-3.5 py-2.5 text-sm rounded-lg border ${
                   validationErrors.syllabusDetails
-                    ? "border-rose-400 bg-rose-50/30"
+                    ? "border-rose-500 bg-rose-50/40"
                     : "border-slate-300 bg-white"
-                } text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 resize-none`}
+                } text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 resize-y`}
               />
               {validationErrors.syllabusDetails && (
-                <p className="text-[11px] text-rose-600 mt-1">
+                <p className="text-xs text-rose-700 font-medium mt-1">
                   {validationErrors.syllabusDetails}
                 </p>
               )}
@@ -435,7 +435,7 @@ export function GeneratorView({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Bloom's Level */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Bloom&apos;s Taxonomy Level
                 </label>
                 <select
@@ -446,7 +446,7 @@ export function GeneratorView({
                       bloomLevel: e.target.value as BloomTaxonomyLevel,
                     })
                   }
-                  className="w-full px-3 py-2 text-xs sm:text-sm rounded-md border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full h-10 px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
                 >
                   <option value="remember">L1: Remember (Recall facts)</option>
                   <option value="understand">L2: Understand (Explain concepts)</option>
@@ -459,7 +459,7 @@ export function GeneratorView({
 
               {/* Question Type */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Question Type
                 </label>
                 <select
@@ -470,7 +470,7 @@ export function GeneratorView({
                       questionType: e.target.value as QuestionType,
                     })
                   }
-                  className="w-full px-3 py-2 text-xs sm:text-sm rounded-md border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full h-10 px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
                 >
                   <option value="multiple_choice">MCQ (Multiple Choice)</option>
                   <option value="short_answer">Short Answer (3-5 marks)</option>
@@ -481,7 +481,7 @@ export function GeneratorView({
 
               {/* Number of Questions */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Number of Questions
                 </label>
                 <select
@@ -492,7 +492,7 @@ export function GeneratorView({
                       numQuestions: parseInt(e.target.value, 10),
                     })
                   }
-                  className="w-full px-3 py-2 text-xs sm:text-sm rounded-md border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full h-10 px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
                 >
                   <option value={1}>1 Question</option>
                   <option value={2}>2 Questions</option>
@@ -504,7 +504,7 @@ export function GeneratorView({
 
               {/* Marks per Question */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Marks per Question
                 </label>
                 <input
@@ -518,14 +518,14 @@ export function GeneratorView({
                       marksPerQuestion: parseInt(e.target.value, 10) || 1,
                     })
                   }
-                  className="w-full px-3 py-2 text-xs sm:text-sm rounded-md border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full h-10 px-3.5 py-2 text-sm rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
                 />
               </div>
             </div>
 
             {/* Optional Additional Instructions */}
             <div>
-              <label className="block text-xs font-semibold text-slate-800 mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                 Optional Additional Instructions / Constraints
               </label>
               <textarea
@@ -538,7 +538,7 @@ export function GeneratorView({
                   })
                 }
                 placeholder="e.g. Include a numerical reference trace. Avoid trick questions. Ensure distractors address common student misconceptions."
-                className="w-full px-3 py-2 text-xs sm:text-sm rounded-md border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                className="w-full px-3.5 py-2.5 text-sm rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 resize-y"
               />
             </div>
 

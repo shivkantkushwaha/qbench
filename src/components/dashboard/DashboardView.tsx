@@ -74,74 +74,74 @@ export function DashboardView({
       {/* Three-Stage Workflow Section */}
       <div>
         <div className="mb-4">
-          <h2 className="text-base font-semibold text-slate-900">
+          <h2 className="text-base font-bold text-slate-900">
             Three-Stage Assessment Lifecycle
           </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-slate-600 mt-1">
             How QBench ensures examination rigor, fairness, and cognitive alignment
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Stage 1 */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-2xs">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">
                   Stage 1
                 </span>
-                <SlidersHorizontal className="w-4 h-4 text-slate-400" />
+                <SlidersHorizontal className="w-4 h-4 text-slate-600" />
               </div>
-              <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">
                 Question Generation
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Educators specify subject, topic, syllabus objectives, Bloom&apos;s level, question format, and marks. Generates stems, expected answers, and step-by-step marking schemes using V1, V2, or V3 prompts.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-              Output: Structured questions, answers & rubrics
+            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-600">
+              Output: Structured questions, answers &amp; rubrics
             </div>
           </div>
 
           {/* Stage 2 */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-2xs">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">
                   Stage 2
                 </span>
-                <ShieldCheck className="w-4 h-4 text-slate-400" />
+                <ShieldCheck className="w-4 h-4 text-slate-600" />
               </div>
-              <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">
                 Independent Quality Review
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 A separate AI reviewer audits every question against 7 criteria (factual accuracy, syllabus relevance, Bloom alignment, clarity, answer key, rubric completeness, and marks consistency).
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-              Output: PASS / NEEDS IMPROVEMENT / FAIL & 100-pt rubric
+            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-600">
+              Output: PASS / NEEDS IMPROVEMENT / FAIL &amp; 100-pt rubric
             </div>
           </div>
 
           {/* Stage 3 */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between">
+          <div className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between shadow-2xs">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">
                   Stage 3
                 </span>
-                <Brain className="w-4 h-4 text-slate-400" />
+                <Brain className="w-4 h-4 text-slate-600" />
               </div>
-              <h3 className="text-sm font-semibold text-slate-900 mb-1.5">
+              <h3 className="text-sm font-bold text-slate-900 mb-1.5">
                 Targeted Question Refinement
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Applies surgical fixes only to flagged or selected questions using reviewer feedback—preserving topic, Bloom&apos;s tier, question type, and marks—with a before-and-after diff.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-500">
+            <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] font-medium text-slate-600">
               Output: Corrected items + before/after comparison
             </div>
           </div>
@@ -157,50 +157,50 @@ export function DashboardView({
               title="Assessment Standards"
               subtitle="Psychometric guidelines enforced by QBench"
             />
-            <CardContent className="space-y-3.5">
-              <div className="flex items-start gap-2.5 text-xs text-slate-600">
+            <CardContent className="space-y-4">
+              <div className="flex items-start gap-2.5 text-xs text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-slate-800">
+                  <span className="font-semibold text-slate-900">
                     Bloom&apos;s Revised Taxonomy:
                   </span>
-                  <p className="text-slate-500 mt-0.5">
+                  <p className="text-slate-600 mt-0.5 leading-relaxed">
                     Covers L1 Remember through L6 Create with verb calibration.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 text-xs text-slate-600">
+              <div className="flex items-start gap-2.5 text-xs text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-slate-800">
+                  <span className="font-semibold text-slate-900">
                     Distractor Psychometrics:
                   </span>
-                  <p className="text-slate-500 mt-0.5">
+                  <p className="text-slate-600 mt-0.5 leading-relaxed">
                     Distractors reflect documented student misconceptions, avoiding trivial giveaways.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 text-xs text-slate-600">
+              <div className="flex items-start gap-2.5 text-xs text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-slate-800">
+                  <span className="font-semibold text-slate-900">
                     Granular Marking Rubrics:
                   </span>
-                  <p className="text-slate-500 mt-0.5">
+                  <p className="text-slate-600 mt-0.5 leading-relaxed">
                     Step-by-step points eliminate subjective grading variance.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-slate-100">
+              <div className="pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => onNavigate("prompt-lab")}
-                  className="w-full text-center text-xs font-semibold text-blue-600 hover:text-blue-700 py-1.5 transition-colors"
+                  className="w-full text-center text-xs font-semibold text-blue-700 hover:text-blue-800 bg-blue-50/70 hover:bg-blue-100/70 border border-blue-200 rounded-lg py-2 transition-colors"
                 >
-                  Explore Prompt Architecture (V1, V2, V3) →
+                  Explore Prompt Lab (V1, V2, V3) →
                 </button>
               </div>
             </CardContent>
@@ -226,31 +226,37 @@ export function DashboardView({
                 {DEMO_RECENT_ACTIVITY.map((item: ActivityLogItem) => (
                   <div
                     key={item.id}
-                    className="p-4 sm:px-6 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors"
+                    className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 transition-colors"
                   >
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-semibold text-slate-900 truncate">
+                    <div className="min-w-0 space-y-1.5">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs sm:text-sm font-semibold text-slate-900">
                           {item.topic}
                         </span>
-                        <span className="text-[11px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-medium border border-slate-200">
+                        <span className="text-[11px] px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 font-semibold border border-blue-200">
                           {item.bloomLevel}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-[11px] text-slate-500">
-                        <span>Course: {item.subject}</span>
-                        <span>•</span>
-                        <span>Format: {item.questionType}</span>
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                        <span className="font-medium text-slate-700">{item.subject}</span>
+                        <span className="text-slate-400">•</span>
+                        <span>{item.questionType}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 shrink-0">
-                      <div className="text-right hidden sm:block">
-                        <span className="inline-flex items-center gap-1 text-[11px] text-emerald-700 font-medium">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                          Audited
+                    <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
+                      <div className="text-left sm:text-right">
+                        <span
+                          className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md border ${
+                            item.status === "reviewed"
+                              ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                              : "bg-amber-50 text-amber-800 border-amber-200"
+                          }`}
+                        >
+                          <CheckCircle2 className="w-3 h-3" />
+                          {item.status === "reviewed" ? "Sample Audited" : "Sample Draft"}
                         </span>
-                        <div className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5">
+                        <div className="flex items-center sm:justify-end gap-1 text-[11px] text-slate-500 mt-1">
                           <Clock className="w-3 h-3" />
                           <span>{item.timestamp}</span>
                         </div>
@@ -262,7 +268,7 @@ export function DashboardView({
                           onLoadSample();
                           onNavigate("results");
                         }}
-                        className="px-2.5 py-1.5 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-md transition-colors"
+                        className="px-3 py-1.5 text-xs font-semibold text-slate-800 bg-white hover:bg-blue-50 hover:text-blue-800 hover:border-blue-300 border border-slate-300 rounded-lg transition-colors"
                       >
                         Inspect
                       </button>

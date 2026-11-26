@@ -79,24 +79,24 @@ export function Navbar({ activeTab, setActiveTab, resultsCount }: NavbarProps) {
                     key={item.id}
                     type="button"
                     onClick={() => handleTabClick(item.id)}
-                    className={`inline-flex items-center gap-2 px-3 py-2 rounded-md text-xs font-medium transition-colors ${
+                    className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${
                       isActive
-                        ? "bg-slate-100 text-slate-900 font-semibold"
-                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                        ? "bg-blue-50 text-blue-800 border border-blue-200 font-semibold"
+                        : "text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-transparent font-medium"
                     }`}
                   >
                     <Icon
                       className={`w-4 h-4 ${
-                        isActive ? "text-blue-600" : "text-slate-400"
+                        isActive ? "text-blue-600" : "text-slate-500"
                       }`}
                     />
                     <span>{item.label}</span>
                     {item.badge !== undefined && (
                       <span
-                        className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] font-semibold ${
+                        className={`ml-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-semibold ${
                           isActive
                             ? "bg-blue-600 text-white"
-                            : "bg-slate-200 text-slate-700"
+                            : "bg-slate-200 text-slate-800"
                         }`}
                       >
                         {item.badge}
@@ -149,16 +149,16 @@ export function Navbar({ activeTab, setActiveTab, resultsCount }: NavbarProps) {
                 key={item.id}
                 type="button"
                 onClick={() => handleTabClick(item.id)}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-medium ${
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium ${
                   isActive
-                    ? "bg-blue-50 text-blue-900 font-semibold"
-                    : "text-slate-600 hover:bg-slate-50"
+                    ? "bg-blue-50 text-blue-900 border border-blue-200 font-semibold"
+                    : "text-slate-700 hover:bg-slate-100"
                 }`}
               >
                 <div className="flex items-center gap-2.5">
                   <Icon
                     className={`w-4 h-4 ${
-                      isActive ? "text-blue-600" : "text-slate-400"
+                      isActive ? "text-blue-600" : "text-slate-500"
                     }`}
                   />
                   <span>{item.label}</span>
@@ -171,6 +171,16 @@ export function Navbar({ activeTab, setActiveTab, resultsCount }: NavbarProps) {
               </button>
             );
           })}
+          <div className="pt-2 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => handleTabClick("generator")}
+              className="w-full inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-colors"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Generate Questions</span>
+            </button>
+          </div>
         </div>
       )}
     </header>

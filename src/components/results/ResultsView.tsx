@@ -362,15 +362,15 @@ export function ResultsView({
               <div className="p-5 sm:p-6 space-y-5">
                 {/* Topic / Objective Banner */}
                 {q.syllabusObjective && (
-                  <div className="text-[11px] text-slate-500 bg-slate-50 px-3 py-1.5 rounded border border-slate-200">
-                    <span className="font-semibold text-slate-700">Objective:</span>{" "}
+                  <div className="text-xs text-slate-700 bg-slate-50 px-3.5 py-2 rounded-lg border border-slate-200">
+                    <span className="font-semibold text-slate-900">Objective:</span>{" "}
                     {q.syllabusObjective}
                   </div>
                 )}
 
                 {/* Question Stem */}
                 <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
                     Question Stem
                   </h3>
                   <div className="text-sm font-medium text-slate-900 leading-relaxed whitespace-pre-line">
@@ -381,7 +381,7 @@ export function ResultsView({
                 {/* Multiple Choice Options (if MCQ) */}
                 {q.options && q.options.length > 0 && (
                   <div className="space-y-2">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600">
                       Multiple Choice Options
                     </h4>
                     <div className="grid grid-cols-1 gap-2">
@@ -417,7 +417,7 @@ export function ResultsView({
                                 )}
                               </div>
                               {opt.distractorRationale && (
-                                <p className="mt-1 text-xs text-slate-500 italic">
+                                <p className="mt-1.5 text-xs text-slate-600 italic">
                                   Psychometric Note: {opt.distractorRationale}
                                 </p>
                               )}
@@ -476,14 +476,14 @@ export function ResultsView({
                   >
                     <span className="flex items-center gap-1.5">
                       <span>Step-by-Step Marking Rubric</span>
-                      <span className="text-[11px] font-normal text-slate-500">
+                      <span className="text-xs font-normal text-slate-600">
                         ({q.markingScheme.length} scoring criteria)
                       </span>
                     </span>
                     {isExpanded ? (
-                      <ChevronUp className="w-4 h-4 text-slate-500" />
+                      <ChevronUp className="w-4 h-4 text-slate-600" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-slate-500" />
+                      <ChevronDown className="w-4 h-4 text-slate-600" />
                     )}
                   </button>
 
@@ -492,22 +492,22 @@ export function ResultsView({
                       <div className="overflow-x-auto">
                         <table className="w-full text-left text-xs">
                           <thead>
-                            <tr className="border-b border-slate-200 text-slate-500">
+                            <tr className="border-b border-slate-200 text-slate-700">
                               <th className="pb-2 font-semibold">Evaluation Step / Criterion</th>
                               <th className="pb-2 font-semibold text-center w-24">Marks</th>
-                              <th className="pb-2 font-semibold">Scoring Guidance & Requirements</th>
+                              <th className="pb-2 font-semibold">Scoring Guidance &amp; Requirements</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100">
                             {q.markingScheme.map((step, sIdx) => (
                               <tr key={sIdx} className="hover:bg-slate-50">
-                                <td className="py-2.5 pr-4 font-medium text-slate-900">
+                                <td className="py-2.5 pr-4 font-semibold text-slate-900">
                                   {step.step}
                                 </td>
                                 <td className="py-2.5 px-2 text-center font-bold text-blue-700">
                                   {step.marks}
                                 </td>
-                                <td className="py-2.5 text-slate-600">
+                                <td className="py-2.5 text-slate-700 leading-relaxed">
                                   {step.criteria}
                                 </td>
                               </tr>

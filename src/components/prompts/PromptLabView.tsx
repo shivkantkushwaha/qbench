@@ -520,10 +520,10 @@ export function PromptLabView() {
         <CardContent className="space-y-4">
           {/* Test Case Selector Strip */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-2">
+            <label className="block text-xs font-bold text-slate-900 mb-2">
               Select Sample Test Case:
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-h-52 overflow-y-auto pr-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-60 overflow-y-auto pr-1">
               {testCases.map((tc) => {
                 const active = tc.id === activeTestCase.id;
                 return (
@@ -531,59 +531,64 @@ export function PromptLabView() {
                     key={tc.id}
                     type="button"
                     onClick={() => setSelectedTestCaseId(tc.id)}
-                    className={`text-left p-2.5 rounded-lg border text-xs transition-all ${
+                    className={`text-left p-3 rounded-lg border text-xs transition-all ${
                       active
-                        ? "bg-blue-50/70 border-blue-500 text-slate-900"
-                        : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
+                        ? "bg-blue-50/80 border-2 border-blue-600 text-slate-900 shadow-xs"
+                        : "bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-300"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-1 mb-0.5">
-                      <span className="font-semibold truncate">{tc.name}</span>
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="font-bold text-slate-900 truncate">{tc.name}</span>
+                      {active && (
+                        <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-blue-600 text-white shrink-0">
+                          Selected
+                        </span>
+                      )}
                     </div>
-                    <span className="inline-block text-[10px] font-medium px-1.5 py-0.2 rounded bg-slate-100 text-slate-600">
+                    <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                       {tc.category}
                     </span>
                   </button>
                 );
               })}
             </div>
-            <p className="text-[11px] text-slate-500 mt-2">
-              <strong>Case Purpose:</strong> {activeTestCase.description}{" "}
+            <div className="mt-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed">
+              <strong className="text-slate-900">Case Purpose:</strong> {activeTestCase.description}{" "}
               <span className="text-slate-600">
                 (Expected: {activeTestCase.expectedBehavior})
               </span>
-            </p>
+            </div>
           </div>
 
           {/* Editable Test Input Fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-slate-200">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                 Subject Name
               </label>
               <input
                 type="text"
                 value={activeTestCase.input.subjectName}
                 onChange={(e) => updateActiveInput("subjectName", e.target.value)}
-                className="w-full px-3 py-1.5 text-xs rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                className="w-full h-9 px-3 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Topic (editable — clear to test missing topic)
+              <label className="block text-xs font-semibold text-slate-900 mb-1.5">
+                Topic <span className="font-normal text-slate-600">(clear to test missing topic)</span>
               </label>
               <input
                 type="text"
                 value={activeTestCase.input.topic}
                 onChange={(e) => updateActiveInput("topic", e.target.value)}
-                className="w-full px-3 py-1.5 text-xs rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                className="w-full h-9 px-3 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
               />
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Syllabus Details / Learning Objectives (editable — clear to test empty syllabus)
+              <label className="block text-xs font-semibold text-slate-900 mb-1.5">
+                Syllabus Details / Learning Objectives <span className="font-normal text-slate-600">(clear to test empty syllabus)</span>
               </label>
               <textarea
                 rows={2}
@@ -591,19 +596,19 @@ export function PromptLabView() {
                 onChange={(e) =>
                   updateActiveInput("syllabusDetails", e.target.value)
                 }
-                className="w-full px-3 py-1.5 text-xs rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600"
               />
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:col-span-2">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Bloom&apos;s Level
                 </label>
                 <select
                   value={activeTestCase.input.bloomLevel}
                   onChange={(e) => updateActiveInput("bloomLevel", e.target.value)}
-                  className="w-full px-2.5 py-1.5 text-xs rounded-md border border-slate-300 bg-white"
+                  className="w-full h-9 px-2.5 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900"
                 >
                   <option value="remember">Remember</option>
                   <option value="understand">Understand</option>
@@ -615,7 +620,7 @@ export function PromptLabView() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Question Type
                 </label>
                 <select
@@ -623,7 +628,7 @@ export function PromptLabView() {
                   onChange={(e) =>
                     updateActiveInput("questionType", e.target.value)
                   }
-                  className="w-full px-2.5 py-1.5 text-xs rounded-md border border-slate-300 bg-white"
+                  className="w-full h-9 px-2.5 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900"
                 >
                   <option value="multiple_choice">MCQ</option>
                   <option value="short_answer">Short Answer</option>
@@ -633,7 +638,7 @@ export function PromptLabView() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
                   Questions
                 </label>
                 <input
@@ -642,13 +647,13 @@ export function PromptLabView() {
                   onChange={(e) =>
                     updateActiveInput("numQuestions", Number(e.target.value))
                   }
-                  className="w-full px-2.5 py-1.5 text-xs rounded-md border border-slate-300"
+                  className="w-full h-9 px-3 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Marks (try 0 or -1 for edge)
+                <label className="block text-xs font-semibold text-slate-900 mb-1.5">
+                  Marks <span className="font-normal text-slate-600">(0/-1 edge)</span>
                 </label>
                 <input
                   type="number"
@@ -656,14 +661,14 @@ export function PromptLabView() {
                   onChange={(e) =>
                     updateActiveInput("marksPerQuestion", Number(e.target.value))
                   }
-                  className="w-full px-2.5 py-1.5 text-xs rounded-md border border-slate-300"
+                  className="w-full h-9 px-3 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900"
                 />
               </div>
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Additional Instructions (optional)
+              <label className="block text-xs font-semibold text-slate-900 mb-1.5">
+                Additional Instructions <span className="font-normal text-slate-600">(optional)</span>
               </label>
               <input
                 type="text"
@@ -671,25 +676,26 @@ export function PromptLabView() {
                 onChange={(e) =>
                   updateActiveInput("additionalInstructions", e.target.value)
                 }
-                className="w-full px-3 py-1.5 text-xs rounded-md border border-slate-300"
+                className="w-full h-9 px-3 py-1.5 text-xs sm:text-sm rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-500"
                 placeholder="Optional constraints or conflicting instructions for stress testing..."
               />
             </div>
           </div>
 
           {/* Runner Controls */}
-          <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <label className="inline-flex items-center gap-2 text-xs text-slate-700 cursor-pointer">
+          <div className="pt-4 border-t border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <label className="inline-flex items-center gap-2.5 text-xs font-medium text-slate-800 cursor-pointer">
               <input
                 type="checkbox"
                 checked={includeAutomatedReviewForV1V2}
                 onChange={(e) =>
                   setIncludeAutomatedReviewForV1V2(e.target.checked)
                 }
-                className="w-3.5 h-3.5 rounded border-slate-300 text-blue-600"
+                className="w-4 h-4 rounded border-slate-300 text-blue-600"
               />
               <span>
-                Also fetch Stage 2 Automated Reviewer Feedback for V1 & V2 (V3 always runs all 3 stages)
+                Also fetch Stage 2 Automated Reviewer Feedback for V1 &amp; V2{" "}
+                <span className="text-slate-600">(V3 always runs all 3 stages)</span>
               </span>
             </label>
 
@@ -700,7 +706,7 @@ export function PromptLabView() {
                   type="button"
                   disabled={isAnyRunning}
                   onClick={() => runSingleVersion(v)}
-                  className="px-2.5 py-1.5 text-xs font-medium rounded-md border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 disabled:opacity-50"
+                  className="px-3 py-2 text-xs font-semibold rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 disabled:opacity-50 transition-colors"
                 >
                   Run {v} Only
                 </button>
@@ -713,7 +719,7 @@ export function PromptLabView() {
                   (!versionsToRun.V1 && !versionsToRun.V2 && !versionsToRun.V3)
                 }
                 onClick={handleRunSelectedVersions}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-md bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white shadow-xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white shadow-xs transition-colors"
               >
                 {isAnyRunning ? (
                   <>
@@ -796,7 +802,7 @@ export function PromptLabView() {
                     )}
 
                     {!loading && !result && (
-                      <div className="py-10 text-center text-slate-400">
+                      <div className="py-10 text-center text-slate-600">
                         Not executed for this test case yet.
                       </div>
                     )}
@@ -1167,17 +1173,17 @@ export function PromptLabView() {
                             verdict={rec.humanEvaluation.overallVerdict}
                           />
                         ) : (
-                          <span className="text-slate-400">Unrated</span>
+                          <span className="text-slate-600">Unrated</span>
                         )}
                       </td>
-                      <td className="py-2.5 pr-3 text-[11px] text-slate-600 max-w-xs truncate">
+                      <td className="py-2.5 pr-3 text-[11px] text-slate-700 max-w-xs truncate">
                         {rec.humanEvaluation?.comments || "—"}
                       </td>
                       <td className="py-2.5 text-right">
                         <button
                           type="button"
                           onClick={() => handleDeleteRecord(rec.runId)}
-                          className="p-1 text-slate-400 hover:text-rose-600"
+                          className="p-1 text-slate-600 hover:text-rose-600"
                           title="Delete record"
                         >
                           <Trash2 className="w-3.5 h-3.5" />

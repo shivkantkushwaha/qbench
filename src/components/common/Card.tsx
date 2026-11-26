@@ -8,7 +8,7 @@ interface CardProps {
 export function Card({ children, className = "" }: CardProps) {
   return (
     <div
-      className={`bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xs ${className}`}
+      className={`bg-white border border-slate-200 rounded-xl shadow-xs ${className}`}
     >
       {children}
     </div>
@@ -28,19 +28,19 @@ export function CardHeader({
 }) {
   return (
     <div
-      className={`px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between ${className}`}
+      className={`px-5 sm:px-6 py-4 border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${className}`}
     >
-      <div>
-        <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+      <div className="min-w-0">
+        <h3 className="text-base font-semibold text-slate-900">
           {title}
         </h3>
         {subtitle && (
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-600 mt-1 leading-relaxed">
             {subtitle}
           </p>
         )}
       </div>
-      {action && <div>{action}</div>}
+      {action && <div className="shrink-0">{action}</div>}
     </div>
   );
 }
@@ -52,5 +52,5 @@ export function CardContent({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={`p-6 ${className}`}>{children}</div>;
+  return <div className={`p-5 sm:p-6 ${className}`}>{children}</div>;
 }
